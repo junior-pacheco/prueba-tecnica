@@ -1,14 +1,14 @@
+import { ICustomSelect } from '@interface/shared/components/custom-select/CustomSelect'
 import { Select, SelectItem } from '@nextui-org/react'
 import React, { FC } from 'react'
-import { generateId } from '../modal/tools/generateId'
-import { ICustomSelect } from '@/data/interface/shared/components/custom-select/CustomSelect'
+
 
 const CustomSelect: FC<ICustomSelect> = (props) => {
   // const disabled = props.disabled || (props.dynamicData && props.options.length < 1)
 
   return (
     <Select
-      id={props.id ?? generateId() }
+      id={props.id}
       items={props.options}
       label={props.label}
       placeholder={props.placeholder}

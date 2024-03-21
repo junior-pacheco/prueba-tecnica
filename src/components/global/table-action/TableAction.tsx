@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import Button from '../button/Button'
-import { IButtonConfig, ITableAction } from '@/data/interface/shared/components/table-action/TableAction'
+import { IButtonConfig, ITableAction } from '@interface/shared/components/table-action/TableAction'
 
 const TableAction: FC<ITableAction> = (props) => {
   return (

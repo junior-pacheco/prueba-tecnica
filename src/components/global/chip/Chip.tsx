@@ -1,6 +1,6 @@
 import React from 'react'
 import { Chip as NextChip } from '@nextui-org/react'
-import { IChip } from '@/data/interface/shared/components/chip/Chip'
+import { IChip } from '@interface/shared/components/chip/Chip'
 
 const Chip:React.FC<IChip> = (props) => {
   return (

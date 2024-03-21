@@ -1,0 +1,20 @@
+.page_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.page_header {
+  height: 180px;
+  justify-content: center;
+}  
+
+.header {
+  width: 70%;
+  display: flex;
+  align-self: center;
+}
+
+.title {
+  font-size: calc(1.025rem + .9vw);
+  color: #ffff;
+}

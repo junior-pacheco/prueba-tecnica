@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button as NextUiButton, Tooltip } from '@nextui-org/react'
-import { IButton } from '@/data/interface/shared/components/button/Button'
+import { IButton } from '@interface/shared/components/button/Button'
 
 const Button: React.FC<IButton> = (props) => {
   return (

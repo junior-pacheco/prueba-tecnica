@@ -1,7 +1,7 @@
 import React, { FC, useId, useRef } from 'react'
 import { IoEye, IoEyeOff } from 'react-icons/io5'
 import { Input } from '@nextui-org/react'
-import { IInputLabel } from '@/data/interface/shared/components/input-label/InputLabel'
+import { IInputLabel } from '@interface/shared/components/input-label/InputLabel'
 
 const InputLabel: FC<IInputLabel> = (props) => {
   const inputRef = useRef<HTMLInputElement>(null)

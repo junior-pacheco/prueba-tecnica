@@ -2,10 +2,10 @@ import InputLabel from '../input-label/InputLabel'
 import React, { useMemo, useRef, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
 import { ColumnFilter } from '@tanstack/react-table'
-import { IOption } from '@/data/interface/global/Option'
-import { IFilter, IFilterApplied, ITableFilter } from '@/data/interface/shared/components/table-filter/TableFilter'
 import Chip from '../chip/Chip'
 import CustomSelect from '../custom-select/Select'
+import { IFilter, IFilterApplied, ITableFilter } from '@interface/shared/components/table-filter/TableFilter'
+import { IOption } from '@interface/global/Option'
 
 export default function TableFilter<T> ({ columnFilters, setColumnFilters, availableFilters }: ITableFilter<T>) {
   const [filterDisabledOption, setfilterDisabledOption] = useState<string[]>([])
