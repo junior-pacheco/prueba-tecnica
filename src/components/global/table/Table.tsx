@@ -104,7 +104,7 @@ export default function Table<T> ({ enableTableFooter, tableHeight, enableTableF
         </div>
       }
       <table className='table flex-col border-collapse rounded-[10px] mt-[10px] min-w-full'>
-        <thead className='table table-fixed sticky top-0 w-full h-[40px]  rounded-[5px] bg-primary text-white'>
+        <thead style={{height:'80px'}} className='table table-fixed sticky top-0 w-full rounded-[5px] bg-primary text-white'>
           {table.getHeaderGroups().map(headerGroup => (
             <tr className='bg-none' key={headerGroup.id}>
               {headerGroup.headers.map(header => {
@@ -113,7 +113,7 @@ export default function Table<T> ({ enableTableFooter, tableHeight, enableTableF
                 return (
                   <th
                     key={id}
-                    className='outline-none h-[40px] text-center text-[14px] [&>*:first-child]:rounded-[10px_0_0_10px] [&>*:last-child]:rounded-[0_10px_0_10px] '
+                    className='outline-none h-[50px] text-center text-[18px] [&>*:first-child]:rounded-[10px_0_0_10px] [&>*:last-child]:rounded-[0_10px_0_10px] '
                     // className={props.enableRowSelection ? 'enable_checkox' : ''}
                     style={{ width: columnDef.size === 0 ? 'auto' : columnDef.size }}
                   >
@@ -135,7 +135,7 @@ export default function Table<T> ({ enableTableFooter, tableHeight, enableTableF
           ))}
         </thead>
         <tbody
-          className='flex flex-col gap-[6px] w-full overflow-y-auto'
+          className='flex flex-col gap-[10px] w-full overflow-y-auto'
           style={{
             background: '#ffffff',
             height: tableHeight || enableTablePagination ? `calc(100vh - ${tableHeight ?? '280px'})` : 'calc(100vh - 220px)'

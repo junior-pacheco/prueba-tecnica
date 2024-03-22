@@ -95,7 +95,7 @@ export default function TableFilter<T> ({ columnFilters, setColumnFilters, avail
           appliedFilters.map((filter) => (
 
             <Chip
-              key={generateId()}
+              key={10}
               size='lg'
               variant="shadow"
               onClose={() => deleteFilter(filter.column as string)}
