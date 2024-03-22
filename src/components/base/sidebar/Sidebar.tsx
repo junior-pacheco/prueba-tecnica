@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Accordion, AccordionItem } from '@nextui-org/react';
-import { classNames } from '../../../data/interface/shared/components/custom-select/CustomSelect';
+import { useRouter } from 'next/router';
 
 interface Category {
   id: string;
   name: string;
-  values?: any;
   children_categories?: Category[];
 }
 
 const Sidebar: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null); 
+  const router = useRouter();
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -52,14 +53,35 @@ const Sidebar: React.FC = () => {
     }
   };
 
+  const handleCategoryClick = async (categoryId: string, subcategoryId?: string) => {
+    if (subcategoryId) {
+      await router.push(`/productsCategori?category=${categoryId}&subcategory=${subcategoryId}`); 
+    } else {
+      await fetchSubcategories(categoryId);
+      setSelectedCategory(categoryId); 
+      await router.push(`products?category=${categoryId}`);
+    }
+  };
+
   return (
-    <Accordion variant="splitted" className='text-primary font-bold'>
+    <Accordion variant="splitted" className='font-bold'>
       {categories.map(category => (
-        <AccordionItem className='bg-secondary' key={category.id} title={category.name} onClick={() => category.children_categories || fetchSubcategories(category.id)}>
+        <AccordionItem 
+          key={category.id} 
+          title={category.name} 
+          onClick={() => handleCategoryClick(category.id)}
+          className='!bg-primary text-white'
+          classNames={{
+            title: `${router.asPath.startsWith(`/categories/${category.id}`)
+              ? 'text-white text-[20px] font-bold'
+              : 'text-white text-[20px]'}`,
+            content: '!font-base !text-[13px]'
+          }}
+        >
           {category.children_categories && (
-            <ul className="text-primary list-disc p-5">
+            <ul className="text-white list-disc p-5">
               {category.children_categories.map(subcategory => (
-                <li key={subcategory.id} className="mb-2">{subcategory.name}</li>
+                <li key={subcategory.id} className="mb-2 cursor-pointer" onClick={() => handleCategoryClick(category.id, subcategory.id)}>{subcategory.name}</li>
               ))}
             </ul>
           )}

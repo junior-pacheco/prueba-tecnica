@@ -103,8 +103,8 @@ export default function Table<T> ({ enableTableFooter, tableHeight, enableTableF
           }
         </div>
       }
-      <table className='table flex-col border-collapse rounded-[10px] mt-[10px] min-w-full'>
-        <thead style={{height:'80px'}} className='table table-fixed sticky top-0 w-full rounded-[5px] bg-primary text-white'>
+      <table className='table flex-col border-collapse rounded-[10px] mt-[10px] min-w-[70vw]'>
+        <thead className='table table-fixed sticky top-0 w-full rounded-[5px] bg-primary text-white'>
           {table.getHeaderGroups().map(headerGroup => (
             <tr className='bg-none' key={headerGroup.id}>
               {headerGroup.headers.map(header => {
@@ -138,7 +138,7 @@ export default function Table<T> ({ enableTableFooter, tableHeight, enableTableF
           className='flex flex-col gap-[10px] w-full overflow-y-auto'
           style={{
             background: '#ffffff',
-            height: tableHeight || enableTablePagination ? `calc(100vh - ${tableHeight ?? '280px'})` : 'calc(100vh - 220px)'
+            height: tableHeight || enableTablePagination ? `calc(100vh - ${tableHeight ?? '350px'})` : 'calc(100vh - 220px)'
           }}
           id="scrollable-table"
           ref={scrollableRef}

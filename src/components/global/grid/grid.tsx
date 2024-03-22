@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import { Breadcrumbs, BreadcrumbItem } from '@nextui-org/react'
 import { useRouter } from 'next/router'
 import { IGrid } from '@interface/shared/components/grid/Grid.'
+import Button from '../button/Button'
 
 const Grid: FC<IGrid> = ({ children, title, text, buttons, permissions }) => {
   const router = useRouter()
@@ -11,18 +12,21 @@ const Grid: FC<IGrid> = ({ children, title, text, buttons, permissions }) => {
 
   return (
     <main className='flex flex-col gap-[21px] h-full w-full'>
-      <header className='rounded-[8px] h-[116px] min-[3000px]:h-[250px] flex flex-col'>
+      <header className='rounded-[8px] h-[100px] flex flex-col'>
+        {buttons?.map(button => (
+                <Button
+                  isIconOnly
+                  variant='light'
+                  className='!rounded-full w-[50px] h-[50px] text-primary text-2xl bg-background shadow-[0_2px_3px_0_rgba(0,0,0,0.3)]'
+                  key={12}
+                  {...button}
+                >
+                  {button.icon}
+                </Button>
+            ))}
         <div className='flex items-center justify-between h-full'>
+
           <div className='w-[60%] ms-[50px] overflow-y-hidden h-full flex flex-col justify-center'>
-            <div className=' flex items-center h-[54px]'>
-              <Breadcrumbs size='lg' isDisabled className='font-medium' color='secondary' separator="/">
-                {pathParts.map((part, index) => (
-                  <BreadcrumbItem key={index} href={`/${pathParts.slice(0, index + 1).join('/')}`}>
-                    {part}
-                  </BreadcrumbItem>
-                ))}
-              </Breadcrumbs>
-            </div>
             <div >
               <h3 className='text-primary font-Montserrat-Bold text-[22px] 2xl:text-[40px] min-[3000px]:text-[50px]'>
                 {title}

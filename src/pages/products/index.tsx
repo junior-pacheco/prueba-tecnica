@@ -1,18 +1,22 @@
 import { useMemo, useEffect, useState } from 'react';
-import { RiExternalLinkLine } from 'react-icons/ri'; // Importar el icono RiExternalLinkLine de React Icons
-import { useRouter } from 'next/router';// Importar Link de React Router para envolver el ícono
 import Grid from '../../components/global/grid/grid';
 import Table from '../../components/global/table/Table';
 import { CellContext, createColumnHelper } from '@tanstack/react-table';
 import NotDataComponent from '../../components/global/not-data-component/NotDataComponent';
 import { IFilter } from '@interface/shared/components/table-filter/TableFilter';
 import Button from '../../components/global/button/Button';
+import { useRouter } from 'next/router'; 
+
+interface Category {
+  id: string;
+  name: string;
+  children_categories?: Category[];
+}
 
 const Home = () => {
   const columnHelper = createColumnHelper<any>();
   const [products, setProducts] = useState([]);
-
-  console.log('products', products);
+  const router = useRouter(); 
 
   const avaliableFilters = useMemo<Array<IFilter<any>>>(() => [
     {
@@ -20,14 +24,15 @@ const Home = () => {
       column: 'title'
     },
     {
-      name: 'condition',
+      name: 'Condicion',
       column: 'condition'
     },
     {
-      name: 'Correo electronico',
-      column: 'userEmail'
+      name: 'Precio',
+      column: 'price'
     }
   ], []);
+
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -77,11 +82,12 @@ const Home = () => {
     }),
   ];
 
-  console.log('products tabla', products);
+
 
   return (
     <Grid
-      title='data'
+      title='Productos'
+    
     >
       <Table<any>
         columns={columns}
